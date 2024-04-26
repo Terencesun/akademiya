@@ -1,0 +1,29 @@
+{
+  "name": "akademiya",
+  "version": "0.0.5",
+  "description": "Multi agent management",
+  "main": "./lib/index.js",
+  "types": "./lib/types/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Terence Sun",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Terencesun/akademiya"
+  },
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.7",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "eslint": "^8.52.0",
+    "eslint-config-alloy": "^5.1.2",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.2.2"
+  }
+}

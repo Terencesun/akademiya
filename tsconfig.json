@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "module": "commonjs",
+    "declaration": true,
+    "declarationDir": "./lib/types",
+    "outDir": "./lib",
+    "strict": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "lib": ["es6"]
+  },
+  "exclude": ["node_modules", "src/*.spec.ts"]
+}
