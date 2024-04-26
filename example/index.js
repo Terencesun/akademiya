@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const _ = require("lodash");
-const { Worldtree, Agent } = require("./../lib");
+const { Worldtree, Agent } = require("akademiya");
 const OpenAI = require("openai");
 
 const openai = new OpenAI({
