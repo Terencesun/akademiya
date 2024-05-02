@@ -119,7 +119,7 @@ async function main() {
     const poet = agent1();
     const judges = agent2();
     const boen = wdt(poet, judges);
-    boen.run({
+    await boen.run({
         to: "poet",
         from: "system",
         msg: "请以某一传统节日为主题创作一首五言或七言律诗",

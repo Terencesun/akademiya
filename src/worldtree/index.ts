@@ -44,26 +44,29 @@ export class Worldtree implements InterWTree {
     };
 
     public lifeCycle() {
-        this.clock = setInterval(async () => {
-            if (!this.clockLocker) {
-                this.clockLocker = true;
-                // 分发消息
-                this.msgDispatch();
-                this.clockLocker = false;
-            }
-            this.currentTick ++;
-            if (this.currentTick >= this.tickThreshold) {
-                // 轮次加一
-                this.persist();
-                this.currentRound ++;
-                this.currentTick = 0;
-                logger(`世界轮转->${this.currentRound}->花费:${sumToken(this.costToken)} tokens`);
-                if (this.currentRound > this.round) {
-                    logger("世界运转结束");
-                    process.exit();
+        return new Promise(resolve => {
+            this.clock = setInterval(() => {
+                if (!this.clockLocker) {
+                    this.clockLocker = true;
+                    // 分发消息
+                    this.msgDispatch();
+                    this.clockLocker = false;
                 }
-            }
-        }, 100);
+                this.currentTick ++;
+                if (this.currentTick >= this.tickThreshold) {
+                    // 轮次加一
+                    this.persist();
+                    this.currentRound ++;
+                    this.currentTick = 0;
+                    logger(`世界轮转->${this.currentRound}->花费:${sumToken(this.costToken)} tokens`);
+                    if (this.currentRound > this.round) {
+                        logger("世界运转结束");
+                        resolve(true);
+                        process.exit();
+                    }
+                }
+            }, 100);
+        });
     }
 
     public persist() {
@@ -82,13 +85,13 @@ export class Worldtree implements InterWTree {
         }
     }
 
-    public run(msg: InterMsg) {
+    public async run(msg: InterMsg) {
         this.msgs.push(msg);
         for (const agentName of Object.keys(this.agents)) {
             this.agents[agentName].register(this);
             this.agents[agentName].run();
         }
-        this.lifeCycle();
+        await this.lifeCycle();
     }
 
     public kill() {

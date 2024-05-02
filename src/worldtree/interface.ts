@@ -26,7 +26,7 @@ export interface InterWTree {
 
 export type NormalFunc = () => void;
 
-export type RunFunc = (msg: InterMsg) => void;
+export type RunFunc = (msg: InterMsg) => Promise<void>;
 
 export type RecoverFunc = (memo: Record<string, Array<InterMemo>>) => void;
 
