@@ -15,6 +15,7 @@ export interface InterAgent<ActionModel> {
     lifeCycle: NormalFunc;
     register: registerFunc;
     run: NormalFunc;
+    kill: NormalFunc;
 }
 
 export type NormalFunc = () => void;

@@ -62,7 +62,6 @@ export class Worldtree implements InterWTree {
                     if (this.currentRound > this.round) {
                         logger("世界运转结束");
                         resolve(true);
-                        process.exit();
                     }
                 }
             }, 100);
@@ -92,11 +91,15 @@ export class Worldtree implements InterWTree {
             this.agents[agentName].run();
         }
         await this.lifeCycle();
+        this.kill();
     }
 
     public kill() {
         clearInterval(this.clock as NodeJS.Timeout);
         this.clockLocker = false;
+        for (const agentName of Object.keys(this.agents)) {
+            this.agents[agentName].kill();
+        }
     }
 
 }
