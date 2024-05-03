@@ -21,10 +21,12 @@ export interface InterWTree {
     persist: NormalFunc;
     recover: RecoverFunc;
     run: RunFunc;
-    kill: NormalFunc;
+    kill: PromiseFunc;
 }
 
 export type NormalFunc = () => void;
+
+export type PromiseFunc = () => Promise<void>;
 
 export type RunFunc = (msg: InterMsg) => Promise<void>;
 
