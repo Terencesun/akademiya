@@ -72,7 +72,7 @@ export class Agent<ChatModel> implements InterAgent<ChatModel> {
             const timmer = setInterval(() => {
                 if (!locker) {
                     locker = true;
-                    if (this.clockLocker) {
+                    if (!this.clockLocker) {
                         clearInterval(timmer);
                         clearInterval(this.clock as NodeJS.Timeout);
                         resolve();
