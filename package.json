@@ -1,6 +1,6 @@
 {
   "name": "akademiya",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Multi agent management",
   "main": "./lib/index.js",
   "types": "./lib/types/index.d.ts",

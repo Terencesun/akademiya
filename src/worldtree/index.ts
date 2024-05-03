@@ -73,7 +73,7 @@ export class Worldtree implements InterWTree {
         for (const agentName of Object.keys(this.agents)) {
             store[agentName] = this.agents[agentName].memos;
         }
-        console.log(this.memoFile);
+        logger(this.memoFile);
         if (fs.existsSync(this.memoFile)) fs.unlinkSync(this.memoFile);
         fs.appendFileSync(this.memoFile, JSON.stringify(store, null, 4));
     }
@@ -100,7 +100,7 @@ export class Worldtree implements InterWTree {
         for (const agentName of Object.keys(this.agents)) {
             await this.agents[agentName].kill();
         }
-        console.log("agent任务收尾完成");
+        logger("agent任务收尾完成");
     }
 
 }
