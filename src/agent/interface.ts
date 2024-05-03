@@ -15,10 +15,12 @@ export interface InterAgent<ActionModel> {
     lifeCycle: NormalFunc;
     register: registerFunc;
     run: NormalFunc;
-    kill: NormalFunc;
+    kill: PromiseFunc;
 }
 
 export type NormalFunc = () => void;
+
+export type PromiseFunc = () => Promise<void>;
 
 export type registerFunc = (worldtree: InterWTree) => void;
 

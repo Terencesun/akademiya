@@ -60,7 +60,7 @@ export class Worldtree implements InterWTree {
                     this.currentTick = 0;
                     logger(`世界轮转->${this.currentRound}->花费:${sumToken(this.costToken)} tokens`);
                     if (this.currentRound > this.round) {
-                        logger("世界运转结束");
+                        logger("世界运转结束，agent任务收尾");
                         resolve(true);
                     }
                 }
@@ -91,15 +91,16 @@ export class Worldtree implements InterWTree {
             this.agents[agentName].run();
         }
         await this.lifeCycle();
-        this.kill();
+        await this.kill();
     }
 
-    public kill() {
+    public async kill() {
         clearInterval(this.clock as NodeJS.Timeout);
         this.clockLocker = false;
         for (const agentName of Object.keys(this.agents)) {
-            this.agents[agentName].kill();
+            await this.agents[agentName].kill();
         }
+        console.log("agent任务收尾完成");
     }
 
 }
